@@ -8,6 +8,7 @@ endif
 filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
+filetype plugin on
 
 compiler ruby
 
@@ -26,6 +27,34 @@ set scrolloff=5
 
 set ignorecase
 set smartcase
+
+"fix Vim regex
+nnoremap / /\v
+vnoremap / /\v
+
+"autosave on lost focus
+au FocusLost * :wa
+
+"remove trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+"select in visual mode text that was just pasted
+nnoremap <leader>v V`]
+
+"open vimrc quickly
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+"""""""""working with split panes easier
+
+"new vertical split pane
+nnoremap <leader>w <C-w>v<C-w>l
+"new horizontal split pane
+nnoremap <leader>hw <C-w>s<C-w>l
+"moving around panes easier
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 let g:AckAllFiles = 0
 let g:AckCmd = 'ack --type-add ruby=.feature --ignore-dir=tmp 2> /dev/null'
@@ -73,7 +102,7 @@ map <silent> <LocalLeader>fr :FuzzyFinderTextMateRefreshFiles<CR>
 map <silent> <LocalLeader>gd :e product_diff.diff<CR>:%!git diff<CR>:setlocal buftype=nowrite<CR>
 map <silent> <LocalLeader>pd :e product_diff.diff<CR>:%!svn diff<CR>:setlocal buftype=nowrite<CR>
 map <silent> <LocalLeader>nh :nohls<CR>
-map <LocalLeader>aw :Ack '<C-R><C-W>'
+map <silent> <LocalLeader>aw :Ack '<C-R><C-W>'
 map <silent> <LocalLeader>bd :bufdo :bd<CR>
 map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <LocalLeader>uc :TComment<CR>
