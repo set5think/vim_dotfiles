@@ -44,6 +44,9 @@ nnoremap <leader>v V`]
 "open vimrc quickly
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
+"command-t
+nnoremap <leader>ct :CommandT<CR>
+
 """""""""working with split panes easier
 
 "new vertical split pane
