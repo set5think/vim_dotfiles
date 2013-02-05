@@ -1,6 +1,7 @@
 set nocompatible
 syntax on
 
+au FileType crontab set nobackup nowritebackup
 if &shell == "/usr/bin/sudosh"
   set shell=/bin/bash
 endif
